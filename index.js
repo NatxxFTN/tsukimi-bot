@@ -79,7 +79,7 @@ client.once('ready', async () => {
 client.on("interactionCreate", async interaction => {
   if (!interaction.isButton()) return;
   if (interaction.customId !== "accept_rules") return;
-
+console.log("TOKEN détecté :", process.env.TOKEN ? "OUI" : "NON");
   const role = await interaction.guild.roles.fetch("1477700657069953189");
 
   if (!role) {
