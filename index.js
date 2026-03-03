@@ -107,6 +107,12 @@ client.on("interactionCreate", async interaction => {
 
 console.log("TOKEN détecté :", process.env.TOKEN ? "OUI" : "NON");
 
-client.login(process.env.TOKEN)
-  .then(() => console.log("Connexion à Discord en cours..."))
-  .catch(err => console.error("Erreur login :", err));
+(async () => {
+  try {
+    console.log("Tentative de connexion à Discord...");
+    await client.login(process.env.TOKEN);
+    console.log("Connexion Discord réussie !");
+  } catch (error) {
+    console.error("ERREUR LOGIN DISCORD :", error);
+  }
+})();
